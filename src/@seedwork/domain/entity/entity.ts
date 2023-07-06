@@ -1,8 +1,9 @@
 import UniqueEntityId from "../value-objects/unique-entity-id.vo";
 
-export default class Entity<Props> {
+export default abstract class Entity<Props> {
 
     public readonly uniqueEntityId : UniqueEntityId;
+
     constructor(public readonly props: Props, id?: UniqueEntityId){
         this.uniqueEntityId = id || new UniqueEntityId();
     }
@@ -11,7 +12,7 @@ export default class Entity<Props> {
         return this.uniqueEntityId.value
     }
 
-    joJSON() : Required<{id: string} & Props> {
+    toJSON() : Required<{id: string} & Props> {
         return {
             id : this.id,
             ...this.props
