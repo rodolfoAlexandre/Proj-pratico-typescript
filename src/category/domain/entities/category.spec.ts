@@ -152,5 +152,20 @@ describe('Category Unit Tests', () => {
         category  = new Category({ name: "Movie", created_at })
         expect(category.created_at).toBe(created_at);      
 
-    })    
+    })
+
+    test("should update a name and description of category", () => {
+        const category  = new Category({ name: "Movie" })
+        expect(category.name).toBe('Movie')
+
+        category.update('Movie 2')
+        expect(category.name).toBe('Movie 2')
+
+        expect(category.description).toBeNull()
+
+        category.update('Movie 3', 'Description 3')
+        expect(category.name).toBe('Movie 3')
+
+        expect(category.description).toBe('Description 3')
+    })
 });
