@@ -35,7 +35,7 @@ describe('Entity Unit Tests', () => {
         }
         const uniqueEntityId = new UniqueEntityId()
         const entity = new StubEntity(arrange, uniqueEntityId)
-        expect(entity.toJSON).toStrictEqual({
+        expect(entity.toJSON()).toStrictEqual({
             id: entity.id,
             ...arrange
         })
